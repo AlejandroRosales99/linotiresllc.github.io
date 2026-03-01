@@ -1,0 +1,144 @@
+/* 
+ * LINO TRUCK TIRES - Base Design System
+ * Autor: Antigravity (Senior Code Style)
+ * Descripción: Define las variables de color, tipografía y reset global.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Paleta de Colores Obligatoria */
+    --azul-principal: #1F2A44;
+    /* Confianza / Industria */
+    --amarillo-vial: #F4C430;
+    /* Acción / Botón Productos */
+    --rojo-servicio: #C62828;
+    /* Alerta / Servicio 24/7 */
+    --gris-acero: #5F6368;
+    /* Texto secundario */
+    --blanco: #FFFFFF;
+    --oscuro-fondo: #111827;
+    /* Fondo oscuro para secciones industriales */
+    --gris-claro-fondo: #F3F4F6;
+    /* Fondo claro para contraste */
+
+    /* Tipografías */
+    --font-titulos: 'Oswald', sans-serif;
+    --font-cuerpo: 'Inter', sans-serif;
+
+    /* Sombras y Bordes */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --border-radius: 4px;
+    /* Estilo industrial: poco redondeo */
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-cuerpo);
+    background-color: var(--blanco);
+    color: var(--azul-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-titulos);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-titulos);
+    text-transform: uppercase;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+
+/* Utilidades de Diseño */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Botones con los colores de la marca */
+.btn {
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-block;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.btn-amarillo {
+    background-color: var(--amarillo-vial);
+    color: var(--azul-principal);
+}
+
+.btn-amarillo:hover {
+    background-color: #e0b42b;
+    transform: translateY(-2px);
+}
+
+.btn-rojo {
+    background-color: var(--rojo-servicio);
+    color: var(--blanco);
+}
+
+.btn-rojo:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+}
+
+.btn-azul {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+}
+
+.btn-azul:hover {
+    background-color: #162035;
+}

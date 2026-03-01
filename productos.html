@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | LINO TRUCK TIRES</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/productos.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LINO <span>TRUCK TIRES</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" class="active">Productos</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Filtros y Productos -->
+    <main class="container section-padding">
+        <div class="text-center mb-4">
+            <h1>Nuestro Catálogo</h1>
+            <p>Encuentra el neumático perfecto para tu operación.</p>
+        </div>
+        <div class="shop-layout">
+            <!-- Sidebar Filtros -->
+            <aside class="filters-sidebar">
+                <div class="filter-group">
+                    <h3>Filtrar por Tipo</h3>
+                    <ul class="filter-list">
+                        <li><label><input type="radio" name="tipo" value="todos" checked> Todos los tipos</label></li>
+                        <li><label><input type="radio" name="tipo" value="Carga Pesada"> Carga Pesada</label></li>
+                        <li><label><input type="radio" name="tipo" value="Larga Distancia"> Larga Distancia</label></li>
+                        <li><label><input type="radio" name="tipo" value="Urbano"> Urbano</label></li>
+                    </ul>
+                </div>
+                <div class="filter-group">
+                    <h3>Buscar Neumático</h3>
+                    <input type="text" id="search-input" placeholder="Nombre o medida...">
+                </div>
+            </aside>
+
+            <!-- Grid de Productos -->
+            <section class="products-container">
+                <div class="products-header">
+                    <span id="results-count">Mostrando 0 productos</span>
+                </div>
+                <div class="products-grid" id="main-products-grid">
+                    <!-- Se carga dinámicamente -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Lino Truck Tires. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/tienda.js"></script>
+
+    <!-- Modal de Detalles del Producto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img id="modal-image" src="" alt="Producto">
+                </div>
+                <div class="modal-info">
+                    <span id="modal-tipo" class="badge"></span>
+                    <h2 id="modal-nombre"></h2>
+                    <p class="modal-specs"><strong>Medidas:</strong> <span id="modal-medidas"></span></p>
+                    <p class="modal-specs"><strong>Marca:</strong> <span id="modal-marca"></span></p>
+                    <div class="modal-description">
+                        <h3>Descripción</h3>
+                        <p id="modal-descripcion"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <span id="modal-precio" class="price-tag"></span>
+                        <a id="modal-whatsapp" href="#" class="btn btn-amarillo">
+                            <i class="fab fa-whatsapp"></i> Cotizar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

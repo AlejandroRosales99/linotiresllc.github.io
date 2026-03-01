@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin | LINO TRUCK TIRES</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Login Simulado -->
+    <div id="login-container" class="login-wrapper">
+        <div class="login-box">
+            <div class="logo text-center mb-4">LINO <span>TRUCK TIRES</span></div>
+            <h2>Acceso Administrativo</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Usuario</label>
+                    <input type="text" id="username" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" placeholder="admin123" required>
+                </div>
+                 <br>
+                <button type="submit" class="btn btn-azul btn-full">Ingresar al Panel</button>
+               
+            </form>
+            <p id="login-error" class="error-text" style="display:none;">Credenciales incorrectas (admin/admin123)</p>
+        </div>
+    </div>
+
+    <!-- Panel de Administración -->
+    <div id="admin-panel" class="admin-layout" style="display:none;">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">LINO <span>TRUCK</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" id="nav-productos"><a href="#"><i class="fas fa-box"></i> Productos</a></li>
+                    <li id="nav-servicios"><a href="#"><i class="fas fa-tools"></i> Servicios</a></li>
+                    <li><a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> Ir a Web</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <!-- Sección Productos -->
+            <section id="section-productos">
+                <header class="admin-header">
+                    <h1>Dashboard de Inventario</h1>
+                    <button class="btn btn-amarillo" id="btn-nuevo-producto"><i class="fas fa-plus"></i> Nuevo
+                        Producto</button>
+                </header>
+
+                <div class="admin-content">
+                    <div class="admin-products-grid" id="admin-products-table">
+                        <!-- Se llena con JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Servicios -->
+            <section id="section-servicios" style="display:none;">
+                <header class="admin-header">
+                    <h1>Gestión de Servicios y Soporte</h1>
+                    <button class="btn btn-amarillo" id="btn-nuevo-servicio"><i class="fas fa-plus"></i> Nuevo
+                        Servicio</button>
+                </header>
+
+                <div class="admin-content">
+                    <div class="admin-products-grid" id="admin-services-table">
+                        <!-- Se llena con JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Agregar/Editar Producto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Agregar Nuevo Producto</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="product-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre del Producto</label>
+                        <input type="text" id="prod-nombre" placeholder="Ej: Heavy Duty King" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio ($)</label>
+                        <input type="number" step="0.01" id="prod-precio" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <input type="text" id="prod-marca" placeholder="Ej: Bridgestone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Medidas</label>
+                        <input type="text" id="prod-medidas" placeholder="Ej: 295/85 R22.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Uso</label>
+                        <select id="prod-tipo">
+                            <option value="Carga Pesada">Carga Pesada</option>
+                            <option value="Larga Distancia">Larga Distancia</option>
+                            <option value="Urbano">Urbano</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Imagen del Producto</label>
+                        <label for="prod-file" class="image-upload-wrapper">
+                            <img id="image-preview" src="assets/img/tires-stack.png" alt="Vista previa">
+                            <div class="upload-info">
+                                <h4>Seleccionar Foto</h4>
+                                <p class="help-text">Haz clic para buscar en tu equipo la imagen real del neumático.</p>
+                                <input type="file" id="prod-file" accept="image/*" style="display:none;">
+                                <input type="hidden" id="prod-imagen" value="assets/img/tires-stack.png">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full-width mt-4">
+                    <label>Descripción del Producto</label>
+                    <textarea id="prod-descripcion" rows="3"
+                        placeholder="Describe las ventajas y especificaciones clave..."></textarea>
+                </div>
+                <div class="form-checkboxes">
+                    <label><input type="checkbox" id="prod-destacado"> 🔥 Destacar en Inicio</label>
+                    <label><input type="checkbox" id="prod-activo" checked> ✅ Producto Activo</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-azul btn-save" id="btn-save-product">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar/Editar Servicio -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="service-modal-title">Agregar Nuevo Servicio</h2>
+                <span class="close-modal service-close">&times;</span>
+            </div>
+            <form id="service-form">
+                <input type="hidden" id="edit-service-id">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Título del Servicio</label>
+                        <input type="text" id="serv-titulo" placeholder="Ej: Cambio de Aceite" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Icono (FontAwesome)</label>
+                        <div class="icon-selector-wrapper">
+                            <input type="text" id="serv-icon" placeholder="fas fa-tools" required>
+                            <div class="icon-preview-box" id="serv-icon-preview">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                        </div>
+                        <p class="help-text mt-2">Selecciona un icono o escribe uno:</p>
+                        <div class="predefined-icons">
+                            <div class="icon-btn" title="Camion" data-icon="fas fa-truck"><i class="fas fa-truck"></i>
+                            </div>
+                            <div class="icon-btn" title="Herramientas" data-icon="fas fa-tools"><i
+                                    class="fas fa-tools"></i></div>
+                            <div class="icon-btn" title="Aceite" data-icon="fas fa-oil-can"><i
+                                    class="fas fa-oil-can"></i></div>
+                            <div class="icon-btn" title="Llanta" data-icon="fas fa-tire"><i class="fas fa-tire"></i>
+                            </div>
+                            <div class="icon-btn" title="Carretera" data-icon="fas fa-road"><i class="fas fa-road"></i>
+                            </div>
+                            <div class="icon-btn" title="Auxilio" data-icon="fas fa-truck-pickup"><i
+                                    class="fas fa-truck-pickup"></i></div>
+                            <div class="icon-btn" title="Equipos" data-icon="fas fa-users-cog"><i
+                                    class="fas fa-users-cog"></i></div>
+                            <div class="icon-btn" title="Combustible" data-icon="fas fa-gas-pump"><i
+                                    class="fas fa-gas-pump"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensaje WhatsApp</label>
+                        <input type="text" id="serv-whatsapp" placeholder="Hola, me interesa el servicio..." required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Descripción del Servicio</label>
+                        <textarea id="serv-descripcion" rows="3"
+                            placeholder="Describe los beneficios de este servicio..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-checkboxes">
+                    <label><input type="checkbox" id="serv-destacado"> ✨ Destacar Servicio (Aparece resaltado)</label>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-azul btn-save">Guardar Servicio</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/database.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

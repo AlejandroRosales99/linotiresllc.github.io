@@ -1,0 +1,348 @@
+/* 
+ * LINO TRUCK TIRES - Componentes Globales
+ */
+
+/* Navigation */
+.navbar {
+    background-color: var(--azul-principal);
+    color: var(--blanco);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-titulos);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--amarillo-vial);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li {
+    font-family: var(--font-titulos);
+    text-transform: uppercase;
+}
+
+.nav-links a:hover {
+    color: var(--amarillo-vial);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--oscuro-fondo);
+    color: var(--blanco);
+    padding: 60px 0 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer h3 {
+    margin-bottom: 20px;
+    color: var(--amarillo-vial);
+}
+
+.footer-info p {
+    margin-bottom: 10px;
+    color: #9ca3af;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Product Cards */
+.card {
+    background: var(--blanco);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    height: 280px;
+    /* Imagen más prominente */
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    transition: background 0.3s ease;
+}
+
+.card-img img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12));
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.08) rotate(2deg);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-tipo {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--gris-acero);
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card-specs {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-price {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+}
+
+/* Modal styles for Admin and WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+/* Modal Details */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--blanco);
+    width: 90%;
+    max-width: 900px;
+    border-radius: var(--border-radius);
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--azul-principal);
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 2010;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--rojo-servicio);
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.modal-img {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.modal-img img {
+    max-height: 400px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.modal-info {
+    flex: 1.2;
+    min-width: 300px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.badge {
+    background: var(--azul-principal);
+    color: var(--blanco);
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    display: inline-block;
+    align-self: flex-start;
+    margin-bottom: 15px;
+}
+
+.modal-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--azul-principal);
+}
+
+.modal-specs {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--gris-acero);
+}
+
+.modal-description {
+    margin: 25px 0;
+}
+
+.modal-description h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--azul-principal);
+}
+
+.modal-description p {
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+.modal-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.price-tag {
+    font-family: var(--font-titulos);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--azul-principal);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .modal-body {
+        flex-direction: column;
+    }
+
+    .modal-img {
+        padding: 30px;
+    }
+
+    .modal-info {
+        padding: 30px;
+    }
+
+    .modal-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .price-tag {
+        font-size: 1.8rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
